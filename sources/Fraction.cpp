@@ -25,11 +25,11 @@ using namespace ariel;
         }
         else if (den == 0 && num < 0)
         {
-            throw invalid_argument("you can't create a Fraction with zero in the deominator");
+            throw std::invalid_argument("you can't create a Fraction with zero in the deominator");
         }
         else if (den == 0 && num > 0)
         {
-            throw invalid_argument("you can't create a Fraction with zero in the deominator");
+            throw std::invalid_argument("you can't create a Fraction with zero in the deominator");
         }
 
         else if(den < 0 && num <0)
@@ -155,6 +155,11 @@ using namespace ariel;
     // Overloading the / operator for two fractions
     Fraction Fraction::operator/(const Fraction &other)
     {
+        if (other == 0)
+        {
+            throw std::runtime_error("you can't devide with zero");
+        }
+        
         long long num = (long long)numerator * (long long)other.denominator;
         long long den = (long long)denominator * (long long)other.numerator;
         if (num > INT_MAX || num < INT_MIN || den > INT_MAX || den > INT_MAX)
@@ -169,7 +174,7 @@ using namespace ariel;
     {
         if (other == 0)
         {
-            throw invalid_argument("you can't devide with zero");
+            throw std::runtime_error("you can't devide with zero");
         }
         return *this / Fraction(other);
     }

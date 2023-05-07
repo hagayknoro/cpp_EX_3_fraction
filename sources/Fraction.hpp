@@ -18,7 +18,7 @@ private:
 
 public:
     // Constructor for creating a Fraction object from integer values
-    Fraction(int num = 0, int den = 1);
+    Fraction(int, int);
 
     // Constructor for creating a Fraction object from a double value
     Fraction(float);
@@ -85,7 +85,7 @@ public:
     {
         if (rhs.numerator == 0)
         {
-            throw std::invalid_argument("you can't devide with zero");
+            throw std::runtime_error("you can't devide with zero");
         }
     return Fraction(lhs) / rhs ;
     }
